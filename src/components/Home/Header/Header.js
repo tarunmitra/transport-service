@@ -4,7 +4,7 @@ import { UserContext } from '../../../App';
 import './Header.css'
 
 const Header = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const [loggedInUser] = useContext(UserContext)
     return (
         <div className="nav-style container">
             <nav className="nav">
