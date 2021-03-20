@@ -1,0 +1,26 @@
+.nav{
+    margin-left: auto;
+}
+.nav li{
+    display: inline;
+    margin-left: 50px;
+    
+  }
+  
+  .nav a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  @media(min-width:768px){
+      .nav-style{
+          width: 100%;
+      }
+  }
+  .login{
+      background-color: tomato;
+      color: white;
+      border: 0;
+      border-radius: 3px;
+      padding: 5px;
+  }
