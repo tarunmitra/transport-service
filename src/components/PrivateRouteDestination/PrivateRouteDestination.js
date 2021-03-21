@@ -4,7 +4,7 @@ import { UserContext } from './../../App';
 
 
 const PrivateRouteDestination = ({ children, ...rest }) => {
-    const [rideInfo, setRideInfo, loggedinUser, setLoggedInUser] = useContext(UserContext);
+    const [loggedinUser] = useContext(UserContext);
     const { email } = loggedinUser;
     return (
         <Route

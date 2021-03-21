@@ -10,7 +10,7 @@ import mapImage from '../../image/Map.png';
 
 const SearchResult = () => {
 
-    const [rideInfo, setRideInfo, loggedinUser, setLoggedInUser] = useContext(UserContext);
+    const [rideInfo] = useContext(UserContext);
     let { from, to, name, date, time, id, rent, user } = rideInfo;
     console.log('res', from, to, name, id);
 

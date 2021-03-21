@@ -5,7 +5,7 @@ import { UserContext } from './../../App';
 import './Header.css';
 
 const Header = () => {
-    const [rideInfo, setRideInfo, loggedinUser, setLoggedInUser] = useContext(UserContext);
+    const [loggedinUser] = useContext(UserContext);
     console.log(loggedinUser);
     const {isSignedIn, name} = loggedinUser;
 
