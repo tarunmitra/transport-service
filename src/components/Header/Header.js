@@ -12,7 +12,7 @@ const Header = () => {
     return (
         <Navbar expand="lg">
             <Container>
-                <Navbar.Brand as={Link} to="/">Riding Club</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">Transport Service</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
