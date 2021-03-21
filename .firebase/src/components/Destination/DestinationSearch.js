@@ -1,11 +1,11 @@
-import React, { useContext} from 'react';
+import React, { useContext, useState } from 'react';
 import './DestinationSearch.css';
 import { Col, Container, Row } from 'react-bootstrap';
 import Header from '../Header/Header';
+import mapImage from '../../image/Map.png';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from './../../App';
 import { useForm } from 'react-hook-form';
-import Map from '../map/Map';
 
 
 const DestinationSearch = () => {
@@ -89,7 +89,7 @@ const DestinationSearch = () => {
 
                     <Col md={7}>
                         <div className="map">
-                            <Map></Map>
+                            <img src={mapImage} alt="" className='img-fluid' />
                         </div>
                     </Col>
                 </Row>

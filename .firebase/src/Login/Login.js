@@ -6,7 +6,8 @@ import firebaseConfig from './firebase.config';
 import { Container } from 'react-bootstrap';
 import Header from '../components/Header/Header';
 import { useForm } from 'react-hook-form';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { UserContext } from './../App';
 import { useHistory, useLocation } from 'react-router';
@@ -28,7 +29,7 @@ const Login = () => {
         error: ''
     });
 
-    const [loggedInUser,setLoggedInUser] = useContext(UserContext);
+    const [rideInfo, setRideInfo, loggedinUser, setLoggedInUser] = useContext(UserContext);
     let history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };

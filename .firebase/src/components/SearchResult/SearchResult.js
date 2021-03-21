@@ -6,12 +6,11 @@ import Header from '../Header/Header';
 import './SearchResult.css';
 import { UserContext } from './../../App';
 import fakeData from '../../fakeData/data.json';
-//import mapImage from '../../image/Map.png';
-import Map from '../map/Map';
+import mapImage from '../../image/Map.png';
 
 const SearchResult = () => {
 
-    const [rideInfo] = useContext(UserContext);
+    const [rideInfo, setRideInfo, loggedinUser, setLoggedInUser] = useContext(UserContext);
     let { from, to, name, date, time, id, rent, user } = rideInfo;
     console.log('res', from, to, name, id);
 
@@ -65,7 +64,7 @@ const SearchResult = () => {
 
                     <Col md={7}>
                         <div className="map">
-                            <Map></Map>
+                            <img src={mapImage} alt="" className='img-fluid' />
                         </div>
                     </Col>
                 </Row>

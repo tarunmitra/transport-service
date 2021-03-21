@@ -42,7 +42,9 @@ function App() {
             <Home></Home>
           </Route>
 
-          
+          {/* <PrivateRoute path='/destination/:rideName/:rideId'>
+            <DestinationSearch></DestinationSearch>
+          </PrivateRoute> */}
           <PrivateRouteDestination path='/destination/:rideName/:rideId'>
             <DestinationSearch></DestinationSearch>
           </PrivateRouteDestination>
