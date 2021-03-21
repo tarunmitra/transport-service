@@ -1,26 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import Header from './Header/Header';
+import React, { useContext } from 'react';
+import Header from '../Header/Header';
+import './Home.css';
 import fakeData from '../../fakeData/data.json';
-import Counter from './Counter/Counter';
-import './Home.css'
-import backGroundImg from '../../Bg.png'
+import { Container, Row } from 'react-bootstrap';
+import RideDetails from '../RideDetails/RideDetails';
+import { useHistory } from 'react-router';
+import { UserContext } from './../../App';
 
 const Home = () => {
-    const [cars, setCars] = useState([]);
-    console.log(cars)
-    useEffect(() => {
-        setCars(fakeData)
-    }, [])
+
+    let history = useHistory();
+    let[rideInfo, setRideInfo] = useContext(UserContext);
+    let ridein = {...rideInfo}
+    const handleRide = (rideName,id) => {
+        history.push(`/destination/${rideName}/${id}`);
+        ridein.name = rideName;
+        ridein.id = id;
+        setRideInfo(ridein)
+    }
+
     return (
-        <div className="container">
-        <div id="backgroundImage" style={{backgroundImage:`url(${backGroundImg})`}}>
+        <div className='bg-banner'>
             <Header></Header>
-            <div className="divStyle">
-            {
-                cars.map(car => <Counter car={car} key={car.id}></Counter>)
-            }
-            </div>
-        </div>
+            
+            <Container className='home-area'>
+                <Row>
+                    {
+                        fakeData.map(rides => <RideDetails rides={rides} handleRide={handleRide} key={rides.id} />)
+                    }
+                </Row>
+            </Container>
         </div>
     );
 };

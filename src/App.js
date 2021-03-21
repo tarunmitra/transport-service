@@ -1,53 +1,70 @@
+
 import './App.css';
-import Home from './components/Home/Home';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
+  Route
 } from "react-router-dom";
-import Login from './components/Login/Login';
-
-import Error from './components/Error/Error';
-import Destination from './components/Destination/Destination';
+import Home from './components/Home/Home';
+import DestinationSearch from './components/Destination/DestinationSearch';
+import SearchResult from './components/SearchResult/SearchResult';
 import { createContext, useState } from 'react';
-import PrivateRoute from './components/Home/PrivateRoute/PrivateRoute';
+import Login from './Login/Login';
+import PrivateRouteDestination from './components/PrivateRouteDestination/PrivateRouteDestination';
+import PrivateRouteResult from './components/PrivateRouteResult/PrivateRouteResult';
+
 
 export const UserContext = createContext();
 
-
 function App() {
-  const [loggedInUser, setLoggedInUser ] = useState({})
+
+  const [rideInfo, setRideInfo] = useState({
+    name: 'car',
+    id: 2,
+    rent: 67,
+    user: 4
+  });
+  console.log('rideInfo', rideInfo);
+  const [loggedinUser, setLoggedInUser] = useState({})
+  console.log('loggedinuser', loggedinUser);
+
   return (
-    <UserContext.Provider value ={[loggedInUser, setLoggedInUser]}>
-    <Router>
-      <Switch>
+    <UserContext.Provider value={[rideInfo, setRideInfo, loggedinUser, setLoggedInUser]}>
 
-        <Route path="/home">
-          <Home></Home>
-        </Route>
+      <Router>
 
-        <Route path="/login">
-          <Login></Login>
-        </Route>
+        <Switch>
+          <Route exact path='/'>
+            <Home></Home>
+          </Route>
 
-        <PrivateRoute path="/destination">
-          <Destination></Destination>
-        </PrivateRoute>
-       
-        <PrivateRoute path="/type/:type">
-        <Destination></Destination>
-        </PrivateRoute>
-        
-        <Route exact path="/">
-          <Home></Home>
-        </Route>
+          <Route path='/home'>
+            <Home></Home>
+          </Route>
 
-        <Route path="*">
-          <Error></Error>
-        </Route>
+          {/* <PrivateRoute path='/destination/:rideName/:rideId'>
+            <DestinationSearch></DestinationSearch>
+          </PrivateRoute> */}
+          <PrivateRouteDestination path='/destination/:rideName/:rideId'>
+            <DestinationSearch></DestinationSearch>
+          </PrivateRouteDestination>
 
-      </Switch>
-    </Router>
+          <PrivateRouteResult path='/result'>
+            <SearchResult></SearchResult>
+          </PrivateRouteResult>
+
+          <Route path='/login'>
+            <Login></Login>
+          </Route>
+
+          <PrivateRouteDestination path='/destination/'>
+            <DestinationSearch></DestinationSearch>
+          </PrivateRouteDestination>
+
+        </Switch>
+
+      </Router>
+
     </UserContext.Provider>
   );
 }
